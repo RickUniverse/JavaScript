@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/jquery.js"></script>
+    <script>
+        $(function(){
+            console.log($('a').prop('href'));
+            console.log($('a').prop('href','http://'));
+            console.log($('img').prop('src'));//获取的是绝对路径
+            console.log($('img').prop('style'));
+            console.log($('a').attr('href'));//获取的是值
+            console.log($('img').data('uName','qweewq'));//当做了一个变量看待，不会体现在dom元素中
+            console.log($('img').data('uName'));
+            console.log($('span').data('index','wer'));
+            
+        })
+    </script>
+</head>
+<body>
+    <a href="http://baidu.com"></a>
+    <div class="index"></div>
+    <img src="../../textimg/b1.jpg" alt="" style="height: 300px;">
+    <span class="data-index-1">123</span>
+</body>
+</html>

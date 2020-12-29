@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        body{
+            position: relative;
+            background-image: url(../textimg/b1.jpg);
+            background-repeat: no-repeat;
+            background-size: 1401px;
+        }
+        ul::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+        ul{
+            width: 826px;
+            margin: 100px auto;
+            /* display: inline-block;
+            border: 1px solid red; */
+        }
+        ul li{
+            border: 3px solid rgba(0, 0, 0, .5);
+            float: left;
+        }
+        li img{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul id="box">
+            <li>
+                <img src="../textimg/b1.jpg" alt="">
+            </li>
+            <li>
+                <img src="../textimg/b2.jpg" alt="">
+            </li>
+            <li>
+                <img src="../textimg/b3.jpg" alt="">
+            </li>
+            <li>
+                <img src="../textimg/b4.jpg" alt="">
+            </li>
+        </ul>
+        <script>
+            var imgs = document.getElementById('box').getElementsByTagName('img');
+            for (let i = 0; i < imgs.length; i++) {
+                imgs[i].onclick = function(){
+                    document.body.style.backgroundImage = 'url('+this.src+')';
+                }
+                
+            }
+        </script>
+    </div>
+</body>
+</html>

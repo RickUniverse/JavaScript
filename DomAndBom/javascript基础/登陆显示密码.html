@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 300px;
+            margin: 100px auto;
+            border-bottom: 2px solid red;
+        }
+
+        img {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 20px;
+        }
+
+        .box input {
+            width: 200px;
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label for="pwd">
+            <img src="img/js常见鼠标事件.png" alt="">
+        </label>
+        <input type="password" name="pwd" id="pwd">
+    </div>
+    <script>
+        var flag = 0;
+        var eye = document.querySelector('img');
+        var input = document.querySelector('#pwd');
+        document.getElementsByTagName('img')[0].onclick = function () {
+            if (flag == 0) {
+                input.type = 'password';
+                eye.src = 'img/js常见鼠标事件.png';
+                flag = 1;
+            }else{
+                input.type = 'text';
+                eye.src = 'img/优先级.png';
+                flag = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>

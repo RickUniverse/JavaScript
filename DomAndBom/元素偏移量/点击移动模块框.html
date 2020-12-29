@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .atan{
+            width: 200px;
+            position: absolute;
+            border: 1px solid red;
+            left: 50%;
+            transform: translate(-50%,50%);
+           /*  margin: 0px auto; */
+        }
+        a{
+            font-size: 20px;
+            display: block;
+            text-align: center;
+            /* border: 1px solid red; */
+            /* margin: 0px auto; */
+        }
+        .box{
+            position: relative;
+            display: none;
+            position: absolute;
+            border: 1px solid black;
+            top: 50%;
+            left: 50%;
+            z-index: 11;
+            background-color: white;
+            transform: translate(-50%,-50%);
+            /* translate()函数是css3的新特性.在不知道自身宽高的情况下，可以利用它来进行水平垂直居中.。
+            当使用：top: 50%;left: 50%;， 是以左上角为原点，故不处于中心位置
+            translate(-50%,-50%) 作用是，往上（x轴）,左（y轴）移动自身长宽的 50%，以使其居于中心位置。 */
+        }
+        .title{
+            width: 300px;
+            height: 50px;
+            border: 1px solid red;
+            cursor: move;
+        }
+        .cont_box{
+            width: 300px;
+            height: 100px;
+        }
+        .close_box{
+            padding: 10px;
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            border-radius: 50%;
+            background-color:violet;
+        }
+        .pg{
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, .4);
+        }
+    </style>
+</head>
+<body>
+    <div class="atan"><a href="javascript:;">点击弹出</a></div>
+    <div class="box">
+            <div class="close_box">
+                <a href="javascript:;">关闭</a>
+            </div>
+            <div class="title">
+
+            </div>
+            <div class="cont_box">
+                <div class="cont_1">
+                    <input type="text">
+                </div>
+                <div class="cont_1">
+                    <input type="text">
+                </div>
+            </div>
+    </div>
+    <div class="pg"></div>
+    <script>
+        var atan = document.querySelector('.atan');
+        var box = document.querySelector('.box');
+        var pg = document.querySelector('.pg');
+        var title = document.querySelector('.title');
+        var close_box = document.querySelector('.close_box');
+
+        atan.addEventListener('click',function(){
+            box.style.display = 'block';
+            pg.style.display = 'block';
+        })
+        close_box.addEventListener('click',function(){
+            box.style.display = 'none';
+            pg.style.display = 'none';
+        })
+        title.addEventListener('mousedown',function(e){
+            var x = e.pageX - box.offsetLeft;
+            var y = e.pageY - box.offsetTop;
+            this.addEventListener('mousemove',move)
+
+            function move(e){
+                box.style.left = e.pageX - x + 'px';
+                box.style.top = e.pageY - y + 'px';
+            }
+
+            title.addEventListener('mouseup',function(){
+                title.removeEventListener('mousemove',move);
+            })
+        })
+       
+    </script>
+</body>
+</html>

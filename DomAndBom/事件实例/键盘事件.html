@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidBox{
+            width: 300px;
+            border: 1px solid red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /* document.addEventListener('keyup',function(e){//keyup跟keydown的ansii值字母不区分大小写
+            console.log(e.keyCode);
+            
+        }) */
+        document.addEventListener('keypress',function(e){//区分大小写
+            console.log(e.keyCode);
+            
+        })
+    </script>
+    <input type="text">
+    <script>
+        var input = document.querySelector('input');
+        document.addEventListener('keydown',function(e){
+            if(e.keyCode == 65){
+                input.focus();
+            }
+        })
+    </script>
+    <div class="search">
+        <div class="hidBox"></div>
+        <input type="text">
+    </div>
+    <script>
+        var hidBox = document.querySelector('.hidBox');
+        var input = document.getElementsByTagName('input')[1];
+        input.addEventListener('keyup',function(){
+            if(this.value == ''){
+                hidBox.style.display = 'none';
+            }else{
+                hidBox.innerHTML = this.value;
+                hidBox.style.display = 'block';
+            }
+        })
+        input.addEventListener('blur',function(){
+            hidBox.style.display = 'none';
+        })
+        input.addEventListener('focus',function(){
+            if(this.value != ''){
+                hidBox.style.display = 'block';
+            }
+        })
+    </script>
+</body>
+</html>

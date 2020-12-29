@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        //绑定事件
+        btns[0].onclick = function(){
+            alert('11');
+        }
+        btns[0].onclick = function(){
+            alert('21');
+        }
+        //只绑定第二个事件，输出了21
+        //添加事件监听注册事件
+        btns[1].addEventListener('click',function(){//事件名不加on
+            alert('11');
+        })
+        btns[1].addEventListener('click',function(){//事件名不加on
+            alert('22');
+        })
+        //输出了11  +  22
+        /* btns[3].attachEvent('onclick',function(){//不建议用
+
+        }) */
+        console.dir(btns[1].addEventListener);
+        
+        /* function addEventlisteners(element,evenName,fn){
+            if(element.addEventListener){
+                console.log('可兼容');
+                
+            }
+        }
+        addEventListeners(btns[2],'click',function(){
+
+        }) */
+        //删除事件
+        //1.
+        btns[0].onclick = function(){
+            alert();
+            this.onclick = null;
+        }
+        //2.
+        btns[1].addEventListener('click',fn);//fn函数不需要加括号
+        function fn(){
+            alert('');
+            this.removeEventListener('click',fn);
+        }
+    </script>
+</body>
+</html>

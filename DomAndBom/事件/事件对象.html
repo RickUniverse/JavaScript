@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        qweqweqweqwe
+        <ul>
+            <li>123</li>
+            <li>324</li>
+            <li>4213</li>
+        </ul>
+    </div>
+    //事件委托
+    <script>
+        var div =  document.querySelector('ul');
+        div.addEventListener('click',function(e){
+            //事件委托
+            e.target.style.backgroundColor = 'red';
+        })
+    </script>
+
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        div.addEventListener('click',function(event){//event就是一个事件对象，由计算机自动生成，不用自己赋值
+            //兼容性问题
+            //event = event || window.event;//ie6~8使用window.event使用事件对象
+            console.log(event);
+            //常见事件对象的属性
+            console.log(event.target);//返回触发事件的元素
+            console.log(this);//this指向绑定事件的元素，谁绑定的事件返回谁
+            console.log(event.currentTarget);//跟this作用相识
+            console.log(event.type);//事件的类型
+            
+        });
+        div.addEventListener('mouseover',fn);
+        div.addEventListener('mouseout',fn);
+        function fn(e){
+            console.log(e.type);
+            
+        }
+    </script>
+    <div>
+        <a href="http://www.baidu.com">a标签</a>
+        <form action="">
+            <input type="submit" value="提交">
+        </form>
+    </div>
+    <script>
+        var a = document.querySelector('a');
+        a.onclick = function(e){
+            /* e.preventDefault(); *///常用
+            e.returnValue;//普通绑定事件，取消事件链接的方法,是一个属性
+        }
+        a.addEventListener('click',function(){
+            e.preventDefault();
+        })
+    </script>
+    //禁止选中文本
+    <script>
+        document.addEventListener('contextmenu',function(e){
+            e.preventDefault();
+        })
+        document.addEventListener('selectstart',function(e){
+            e.preventDefault();
+        })
+    </script>
+    <script>
+        //鼠标对象
+        document.addEventListener('click',function(e){
+            //相对于浏览器可视窗口的x y 坐标
+            console.log(e.clientX);
+            console.log(e.clientY);
+            //相对于文档的x y 坐标
+            console.log(e.pageX);
+            console.log(e.pageY);
+            //相对于电脑窗口的x y 坐标
+            console.log(e.screenX);
+            console.log(e.screenX);
+            
+        })
+    </script>
+</body>
+</html>

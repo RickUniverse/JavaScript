@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+       /*  img{
+            display: block;
+        } */
+        a{
+            position: relative;
+            display: block;
+        }
+        .smal{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 0px;
+            left: 0px;
+        }
+        .big{
+            width: 100px;
+            height: 50px;
+            display: none;
+        }
+        li{
+            width: 50px;
+            height: 50px;
+            float: left;
+        }
+        ul{
+            border: 1px solid red;
+            overflow: hidden;
+        }
+        ul .current{
+            width: 100px;
+        }
+        ul .current .big{
+            display: block;
+        }
+        ul .current .smal{
+            display: none;
+        }
+
+    </style>
+    <script src="../../js/jquery.js"></script>
+    <script>
+        $(function(){
+            $('li').mouseenter(function(){
+                $(this).stop().animate({
+                    width:100
+                },0).find('.smal').stop().fadeOut().siblings().stop().fadeIn();
+                $(this).siblings('li').stop().animate({
+                    width:50
+                },0).find('.smal').stop().fadeIn().siblings().stop().fadeOut();
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li class="current">
+                <a href="">
+                    <img src="../../textimg/c1.jpg" alt="" class="smal">
+                    <img src="../../textimg/c.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/b2.jpg" alt="" class="smal">
+                    <img src="../../textimg/b2.jpg" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/c1.jpg" alt="" class="smal">
+                    <img src="../../textimg/c.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/c1.jpg" alt="" class="smal">
+                    <img src="../../textimg/c.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/c1.jpg" alt="" class="smal">
+                    <img src="../../textimg/c.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/c1.jpg" alt="" class="smal">
+                    <img src="../../textimg/c.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/c1.jpg" alt="" class="smal">
+                    <img src="../../textimg/c.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/c1.jpg" alt="" class="smal">
+                    <img src="../../textimg/c.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/b4.jpg" alt="" class="smal">
+                    <img src="../../textimg/b4.jpg" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/b2.jpg" alt="" class="smal">
+                    <img src="../../textimg/b2.jpg" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/b3.jpg" alt="" class="smal">
+                    <img src="../../textimg/b3.jpg" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/b4.jpg" alt="" class="smal">
+                    <img src="../../textimg/b4.jpg" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/b2.jpg" alt="" class="smal">
+                    <img src="../../textimg/b2.jpg" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/b3.jpg" alt="" class="smal">
+                    <img src="../../textimg/b3.jpg" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="../../textimg/b4.jpg" alt="" class="smal">
+                    <img src="../../textimg/b4.jpg" alt="" class="big">
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

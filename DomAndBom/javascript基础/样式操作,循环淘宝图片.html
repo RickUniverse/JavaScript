@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div{
+            width: 300px;
+            height: 300px;
+            background-color: rosybrown;
+        } */
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            text-decoration: none;
+        }
+        .tao ul{
+            border: 1px solid rosybrown;
+        }
+        ul:after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+        ul{
+            width: 200px;
+            margin: 100px auto;
+        }
+        .tao li{
+            width: 24px;
+            height: 24px;
+            float: left;
+            margin: 10px;
+            background-image: url('../textimg/taobao.png');
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        document.querySelector('div').onclick = function(){
+            this.style.background = 'red';//插入到行内，是行内样式
+            this.style.height = '10px';
+            this.style.display = 'none';
+        }
+    </script>
+    <div class="tao">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var lis = document.getElementsByTagName('li');
+        for(var i = 0;i < lis.length; i++){
+            lis[i].style.backgroundPosition = '0 -'+i * 44+'px';
+        }
+    </script>
+</body>
+</html>

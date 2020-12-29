@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>
+        if(navigator.userAgent.match()){
+            location.href = 'http://baidu.com';
+        }
+    </script> -->
+</head>
+<body>
+    <div>
+        
+    </div>
+    <button>111</button>
+    <script>
+        var div = document.querySelector('div');
+        var param = window.location.search.substr(1);
+        var arr = param.split('=');
+        div.innerHTML = arr[1] + '欢迎光临';
+    </script>
+    <script>
+        //location对象的常用方法
+        var btn = document.querySelector('button')
+        btn.addEventListener('click',function(){
+            /* location.assign('http://baidu.com'); */
+            /* location.replace('http://baidu.com'); */
+            location.reload(false);//刷新   加上false强制刷新
+        })
+    </script>
+</body>
+</html>

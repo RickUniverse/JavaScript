@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            padding: 30px;
+            width: 200px;
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+<body>
+    <div class="one two pg"></div>
+    <button style="margin-top: 100px;">开关灯</button>
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.classList[0]);
+        div.classList.add('three');
+        div.classList.remove('one');
+        var btn = document.querySelector('button');
+        btn.addEventListener('click',function(){
+            div.classList.toggle('pg');
+        })
+    </script>
+    <script>
+        var div = document.querySelector('div');
+        var startX = 0;
+        var startY = 0;
+        var x = 0;
+        var y = 0;
+        div.addEventListener('touchstart',function(e){
+            startX = e.targetTouches[0].pageX;
+            startY = e.targetTouches[0].pageY;
+            x = div.offsetLeft;
+            y = this.offsetTop;
+        });
+        div.addEventListener('touchmove',function(e){
+            var moveX = e.targetTouches[0].pageX;
+            var moveY = e.targetTouches[0].pageY;
+
+            this.style.left = (moveX - startX + x) + 'px';
+            this.style.top = (moveY - startY + y) + 'px';
+
+            
+        })
+        div.addEventListener('touchend',function(){
+            console.log('离开');
+            
+        })
+    </script>
+</body>
+</html>

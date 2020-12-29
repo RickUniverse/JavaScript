@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //作用：减少了命名chongshu
+        //第一种方法
+        (function sum(a,b) {
+            console.log(1);
+            console.log(a + b);
+            
+        })(1,2);//可以看作实参
+        //第二种
+        (function sum(a,b) {
+            console.log(a+b);
+            
+        }(1,2));
+    </script>
+</body>
+</html>

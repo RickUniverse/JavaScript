@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            padding: 100px;
+            background-color: rosybrown;
+        }
+    </style>
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+    <video src="../../textimg/b1.jpg" muted></video>
+    <script>
+        //第一种方式，等dom加载完毕
+       /*  $(document).ready(function(){
+            $('div').hide();
+        }); */
+        //第二种
+        $(function(){
+            $('div').hide();
+            jQuery('div').hide();//$是顶级对象
+        });
+        //$('div')//是一个jQuery对象，是伪数组，与原生js的方法不能混用
+        $(function(){
+            //js 跟 jquery 之间的转换
+            //js转jquery
+            $(document.getElementsByTagName('video'));
+            //jquery 转 js
+            //1.第一种方法
+            $('div')[0].style.backgroundColor = 'red';
+            //2第二种方法
+            $('div').get(0).style.backgroundColor = 'red';
+            // $('video')[0].play();
+            $('ul li').css('background','red');//伪数组形式存储，自动在内部循环添加css方法
+            $('ul>li:first').css('background','width');//伪数组第一个
+            $('ul>li:last').css('background','width');//伪数组最后一个
+            $('ul>li:eq(0)').css('background','width');//伪数组第几个
+            $('ul>li:odd').css('background','width');//奇数
+            $('ul>li:even').css('background','width');//偶数
+            //筛选方法
+            $('ul').parent();//最近的亲爸爸
+            $('ul').children('li');//亲儿子  类似于css子选择器
+            $('ul').find();//后代  类似于css后代选择器
+            $('ul').siblings()//兄弟选择器
+            //鼠标移动显示
+            $('ul li').mouseover(function(){
+                $(this).children('a').show();
+            })
+            $('ul li').mouseout(function(){
+                $(this).children('a').hide();
+            })
+            //当前元素之前的兄弟元素
+            $('ul').eq(3).prevAll().css('background','blue');
+            //当前元素之后的兄弟元素
+            $('ul').eq(3).nextAll().css('background','blue');
+            console.log($('ul').hasClass('active'));//是否包含class
+            
+        })
+    </script>
+    <div>
+        
+    </div>
+    <ul class="active">
+        <li>
+            <a href="" style="display: none;">啊啊啊</a>
+        </li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

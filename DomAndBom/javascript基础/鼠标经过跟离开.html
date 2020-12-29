@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .yangshi{
+            background-color: palegoldenrod;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td><input type="checkbox" class="j_cdall"></td>
+                    <td>这里是标题</td>
+                    <td>这里是标题</td>
+                    <td>这里是标题</td>
+                    <td>这里是标题</td>
+                    <td>这里是标题</td>
+                </tr>
+            </thead>
+            <tbody class="j_tb">
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <td><input type="checkbox" class="j_cdall"></td>
+                    <td>这里是标题</td>
+                    <td>这里是标题</td>
+                    <td>这里是标题</td>
+                    <td>这里是标题</td>
+                    <td>这里是标题</td>
+                </tr>
+            </thead>
+            <tbody class="j_tb">
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                    <td>这里是内容</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            var j_cdalls = document.getElementsByClassName('j_cdall');
+            var j_tbs = document.getElementsByClassName('j_tb');
+
+            for(var i = 0; i < j_cdalls.length; i++){
+                console.log(i);
+                
+                j_cdalls[i].onclick = function(){
+                    var index = 0;
+                    var j_inp = j_tbs[index].getElementsByTagName('input');
+                    for(var a = 0; a < j_inp.length; a++){
+                        j_inp[a].checked = this.checked;
+                    }
+                    index++;
+                }
+            }
+        </script>
+
+
+        <!-- <script>
+            var j_cdall = document.getElementById('j_cdall');
+            var j_tds = document.getElementById('j_td').getElementsByTagName('input');
+            j_cdall.onclick = function(){
+                for(var i = 0; i < j_tds.length; i++){
+                    j_tds[i].checked = this.checked;
+                }
+            }
+            for(var i = 0; i < j_tds.length; i++){
+                j_tds[i].onclick = function(){
+                    var flag = true;
+                    for(var i = 0; i < j_tds.length; i++){
+                        if(!j_tds[i].checked){
+                            flag = false;
+                        }
+                    }
+                    j_cdall.checked = flag;
+                 }
+            }
+        </script>
+
+        <script>
+            var trs = document.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            for (let i = 0; i < trs.length; i++) {
+                trs[i].onmouseover = function(){
+                    this.className = 'yangshi';
+                }
+                trs[i].onmouseout = function(){
+                    this.className = '';
+                }
+                
+            }
+        </script> -->
+    </div>
+</body>
+</html>

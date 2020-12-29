@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .view_img{
+            position: relative;
+            width: 450px;
+            height: 450px;
+            cursor: move;
+            border: 1px solid rgba(0, 0, 0, .3);
+        }
+        .mas{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background-color: sandybrown;
+            opacity: .5;
+
+        }
+        .big{
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            left: 460px;
+            top: 0;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, .3);
+        }
+        .bigImg{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="view_img">
+            <img src="../../textimg/iphone.jpg" alt="">
+            <div class="mas">1</div>
+            <div class="big">
+                <img src="../../textimg/bigiphone.jpg" alt="" class="bigImg">
+            </div>
+        </div>
+        <script>
+            var view_img = document.querySelector('.view_img');
+            var mas = document.querySelector('.mas');
+            var big = document.querySelector('.big');
+            var bigImg = document.querySelector('.bigImg');
+            view_img.addEventListener('mouseover',function(){
+                mas.style.display = 'block';
+                big.style.display = 'block';
+                view_img.addEventListener('mousemove',function(e){
+                    var moveY = e.pageY - mas.offsetHeight/2 - this.offsetTop;
+                    var moveX = e.pageX - mas.offsetWidth/2 - this.offsetLeft;
+                    var maxY = view_img.offsetHeight - mas.offsetHeight;
+                    var maxX = view_img.offsetWidth - mas.offsetWidth;
+                    if(moveY <= 0){
+                        moveY = 0;
+                    } else if(moveY >= maxY){
+                        moveY = maxY;
+                    }
+                    if(moveX <= 0){
+                        moveX = 0;
+                    }else if(moveX >= maxX){
+                        moveX = maxX;
+                    }
+                    
+                    mas.style.top = moveY + 'px';
+                    mas.style.left = moveX + 'px';
+
+                    //大图片的移动距离 = 遮挡层的移动距离 * 大图片的最大移动距离 / 遮挡层的最大移动距离
+                    var maxImgY = bigImg.offsetHeight - big.offsetHeight;
+                    var maxImgX = bigImg.offsetWidth - big.offsetWidth;
+                    //大图片的移动距离
+                    var moveBigImgY = moveY * maxImgY / maxY;
+                    var moveBigImgX = moveX * maxImgX / maxX;
+                    
+                    bigImg.style.top = -moveBigImgY + 'px';
+                    bigImg.style.left = -moveBigImgX + 'px';
+                })
+            })
+            view_img.addEventListener('mouseout',function(){
+                mas.style.display = 'none';
+                big.style.display = 'none';
+            })
+        </script>
+    </div>
+</body>
+</html>

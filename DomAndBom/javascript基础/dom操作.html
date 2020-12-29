@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div getTime="2020-1-1" index="2" data-list-name="20"></div>
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.dataset);//h5新增获取自定义命名法，兼容一般
+        console.log(div.dataset.listName);
+        
+    </script>
+    <div class="parent">
+        <span class="son"></span>
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        var son = document.getElementsByClassName('son')[0];
+        console.log(son.parentNode.parentNode);
+        //获取子元素
+        var ul  = document.querySelector('ul');
+        console.log(ul.childNodes);//会获取到所有节点包括文本节点
+        console.log(ul.children);//之会获取到元素子节点
+        console.log(ul.firstChild);//获取第一个子节点，text节点
+        console.log(ul.firstElementChild);//获取第一个元素子节点 li 兼容性不好
+        console.log(ul.lastChild);
+        console.log(ul.lastElementChild);
+        console.log(ul.children[0]);//第一个子节点
+        console.log(ul.children[ul.children.length - 1]);
+        var div = document.querySelector('.parent');
+        console.log(div.nextSibling);//下一个兄弟节点，包含文本节点
+        console.log(div.previousSibling);//上一个
+        console.log(div.nextElementSibling);//下一个元素兄弟节点，兼容不好
+        console.dir(div.previousElementSibling);//上一个
+        function getNextSibling(element){
+            var node = element;
+            while(node = node.nextSibling){
+                if(node.nodeType == 1){
+                    return node;
+                }
+            }
+            return null;
+        }
+        console.log(getNextSibling(div));
+        //创建元素
+        var li = document.createElement('li');
+        /* var ul = document.querySelector('ul'); */
+        ul.appendChild(li);
+        ul.insertBefore(li,ul.children[0])
+        //拷贝元素
+        ul.appendChild(ul.children[3].cloneNode());//如果括号内的脂为空或者false，为浅拷贝，只复制标签，不复制内容
+        ul.appendChild(ul.children[3].cloneNode(true));//如果括号内的值为true，为深拷贝，复制标签，复制内容
+        ul.removeChild(ul.children[0]);//删除订单
+    </script>
+</body>
+</html>

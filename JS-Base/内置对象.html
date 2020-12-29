@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //内置对象
+        console.log(Math.PI);
+        console.log(Math.max([1,2,3,4,5]));
+        console.log(Math.max());
+        //构造一个maths
+        /* function Maths(PI,max,min){
+            this.PI = 3.1415,
+            this.max = function(){
+                var max = agruments[0];
+                for(var i = 1; i < arguments.length; i++){
+                    if(arguments[i] > max){
+                        max = arguments[i];
+                    }
+                }
+                return max;
+            },
+            this.min = function(){
+                var min = agruments[0];
+                for(var i = 1; i < arguments.length; i++){
+                    if(arguments[i] < min){
+                        min = arguments[i];
+                    }
+                }
+                return min;
+            }
+        }
+        var max = new Maths(0,max(1,2,3,4,5,6),min(1,2,3,4,5,6));
+       console.log(max.max());
+       console.log(max.min()); */
+       //绝对值
+       console.log(Math.abs('-1'));//隐时装换
+       console.log(Math.abs('ss'));//NaN    NaN表示非数字值
+       //取整
+       console.log(Math.floor(1.1));//往小了取值 1
+       console.log(Math.floor(1.9));//往小了取值 1
+       console.log(Math.ceil(1.1));//往大了取值 2
+       console.log(Math.ceil(1.8));//往大了取值 2
+       console.log(Math.round(1.5));//四舍五入 .5 往大了取值 2
+       console.log(Math.round(-1.5));//往大了取值 1
+       //随机数 
+       function getRandom(min,max){
+           return Math.floor(Math.random() * (Math.ceil(max) - Math.floor(min) + 1)) + min;
+       }
+        var array = ['a','b','c'];
+        console.log(array[getRandom(0,2)]);
+        //日期内置对象
+        console.log(new Date(2019,10,1));
+        console.log(new Date('2019-10-1 8:8:8'));
+        var date = new Date();
+        var year = date.getFullYear(),
+         month = date.getMonth() + 1,
+         dates = date.getDate();
+         day = date.getDay() == 0?1:date.getDay();
+        console.log('年:'+ year + '月:' + month + '日:' + dates + '星期' + day);
+        
+        function getTime(){
+            var date = new Date();
+            date.valueOf();//haomiao
+            var h = date.getHours(),
+            m = date.getMinutes(),
+            s = date.getSeconds();
+            h = h >= 10 ? ''+ h +'' : '0'+ h;
+            m = m >= 10 ? ''+ m +'' : '0'+ m;
+            s = s >= 10 ? ''+ s +'' : '0'+ s;
+            // return h >= 10 ? ''+ h +'' : '0'+ h +'' + ':' + m >= 10 ? ''+m+'' : '0'+m+'' + ':' + s >= 10 ? ''+s+'' : '0'+s+'';
+            return h + ':' + m + ':' + s;
+        }
+        console.log(getTime());
+
+        console.log(+new Date());//1970-1-1至今的毫秒数
+        console.log(Date.now());
+        
+        //倒计时
+        function countDown(time){
+            var nowTime = +new Date();
+            var inputTime = +new Date(time);
+            var times = (inputTime - nowTime) / 1000;//倒计时的秒数
+            var d = parseInt(times / 60 / 60 / 24);//天
+            d = d >= 10 ? ''+ d +'' : '0'+ d;
+            var h = parseInt(times / 60 / 60 % 24);//时
+            h = h >= 10 ? ''+ h +'' : '0'+ h;
+            var m = parseInt(times / 60 % 60);//分
+            m = m >= 10 ? ''+ m +'' : '0'+ m;
+            var s = parseInt(times % 60);//秒
+            s = s >= 10 ? ''+ s +'' : '0'+ s;
+            return d +':' + h + ':' + m + ':' + s;
+        }
+        console.log(countDown('2020-12-4 24:0:0'));
+        //数组对象
+        var array2 = [];
+        var array3 = new Array(3);//数组长度为3
+        var array4 = new Array(1,2,3,4,2,2,2,2,2,2)//数组内元素为1，2，3，4
+        console.log(array2 instanceof Array);
+        console.log(array2 instanceof String);
+        console.log(Array.isArray(array2));
+        console.log(Array.isArray(String));
+        console.log(array4.push('1',3));//追加到数组的后面，返回新数组长度
+        console.log(array4.unshift('qian','333'));//追加到数组的前面，返回新数组长度
+        console.log(array4.pop());//删除数组的最后一个元素并返回删除的元素，每次只能删除一个
+        console.log(array4.shift());//删除数组的第一个元素并返回删除的元素
+        console.log(array4.reverse());
+        
+        array4.sort(function(a,b){
+            return a - b;//升序
+            return b - a;//降序
+        })
+        console.log(array4);
+        console.log(array4.indexOf('1'));//从数组的开头下标为0开始查找元素，并返回匹配元素的下标，查找不到则返回-1
+        console.log(array4.lastIndexOf('1'));//从数组的最后开始查找元素，并返回匹配元素的下标，查找不到则返回-1
+        function unique(arr){
+            var newArray = [];
+            for(var i = 0; i < arr.length; i++){
+                if(newArray.indexOf(arr[i]) == -1){
+                    newArray[newArray.length] = arr[i];
+                }
+            }
+            return newArray;
+        }
+        console.log(unique(array4));
+        console.log(array4.toString());
+        console.log(array4.join('-'));
+        var str = 'str';
+        console.log(str.length);
+        //基本包装数据类型
+        var temp = new String('str');
+        str = temp;
+        temp = null;
+        var str = "asdfs";
+        console.log(str.indexOf('s',2));
+        var index = str.indexOf('s');
+        var num = 0;
+        while(index != -1){
+            console.log(index + '--------');
+            index = str.indexOf('s',index + 1);
+            num++;
+        }
+        console.log(str.charAt(0));
+        console.log(str.charCodeAt(0));
+        console.log(str[0]);
+        ////////////////////
+        var str = "asdfszsdfasdfxcZXc";
+        var o = {};
+        for(var i = 0; i < str.length; i++){
+            var chars = str.charAt(i);
+            if(o[chars]){
+                o[chars]++;
+            }else{
+                o[chars] = 1;
+            }
+        }
+        console.log(o);
+
+        var max = 0;
+        var k = '';
+        for(var key in o){
+            if(o[key] > max){
+                max = o[key];
+                k = key;
+            }
+        }
+        console.log(k+'::::'+max);
+        //拼接字符串
+        console.log(str.concat('------'));
+        console.log(str.substr(0,2))
+        var str3 = 'ssssdfasssdfassss';
+        while(str3.indexOf('s') != -1){
+            str3 = str3.replace('s','-');
+        }
+        console.log(str3+'-------');
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

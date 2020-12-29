@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fater{
+            position: fixed;
+            position: relative;
+            width: 100px;
+            margin: 30px;
+            border: 1px solid red;
+            padding: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .son{
+            margin: 20px;
+            border: 10px solid blue;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="fater">
+        <div class="son" style="width: 200px;">
+
+        </div>
+    </div>
+    <script>
+        var fater = document.querySelector('.fater');
+        var son = document.querySelector('.son');
+        console.log(fater.offsetTop);
+        console.log(son.offsetTop);
+        console.log(son.offsetLeft);//如果父级没有定位则返回对body的位置
+        console.log(son.offsetWidth);
+        console.log(son.offsetHeight);//返回高度，包含height，padding，border
+        console.log(son.style.width);//只能获取行内样式，带px
+        //鼠标在盒子内的坐标
+        fater.addEventListener('mousemove',function(e){
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            this.innerHTML = 'x坐标：'+ x + '；y坐标：' + y; 
+        })
+    </script>
+</body>
+</html>

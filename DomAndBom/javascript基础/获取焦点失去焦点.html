@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            width: 10px;
+            height: 10px;
+            border: 1px solid red;
+        }
+        .change{
+            width: 200px;
+            height: 200px;
+            border: 1px solid yellow;
+        }
+        p img{
+            width: 440px;
+        }
+        .message{
+            display: inline-block;
+            background-image: url(textimg/right.png)  /* no-repeat left center */;
+            background-repeat: no-repeat;
+            background-repeat: center;
+            /* background-position: (0,0); */
+            padding-left: 20px;
+            color:green;
+        }
+        .error{
+            color: red;
+            background-image: url(textimg/error.png);
+        }
+        .right{
+            background-image: url(textimg/right.png);
+            color:green;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" value="手机">
+    </div>
+    <script>
+        var input = document.getElementsByTagName('input')[0];
+        input.onfocus = function(){
+            if(this.value != ''){
+                this.value = '';
+            }
+            this.style.color = 'blue';
+        }
+        input.onblur = function(){
+            if(this.value === ''){
+                this.value = '手机';
+            }
+            this.style.color = 'red';
+        }
+    </script>
+    <div class="active"></div>
+    <script>
+        document.getElementsByTagName('div')[1].onclick = function(){
+            this.className = 'active change';
+        }
+    </script>
+    <div>
+        <input type="text" id="inp">
+        <p class="message">请输入6~16位的字符</p>
+    </div>
+    <script>
+        var mess = document.getElementsByClassName('message')[0];
+        document.querySelector('#inp').onblur = function(){
+            var val = this.value;
+            if(val.length < 6 || val.length >16){
+                mess.className = 'message error';
+                mess.innerHTML = '长度必须在6~16之间';
+            }else{
+                mess.className = 'message right';
+                mess.innerHTML = '输入正确';
+            }
+        }
+    </script>
+    <div>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+        <button>按钮</button>
+    </div>
+    <script>
+        var btns = document.getElementsByTagName('button');
+        for(var i = 0; i < btns.length; i++){
+            btns[i].onclick = function(){
+                for (let j = 0; j < btns.length; j++) {
+                    btns[j].style.backgroundColor = '';
+                    
+                }
+                this.style.backgroundColor = 'red';
+            }
+        }
+    </script>
+</body>
+</html>

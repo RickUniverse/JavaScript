@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            text-decoration: none;
+            list-style: none;
+        }
+        .focus{
+            position: relative;
+            width: 300px;
+            overflow: hidden;
+            margin: 0px auto;
+        }
+        ul{
+            overflow: hidden;
+            width: 600%;
+            margin-left: -300px;
+        }
+        ul li:nth-child(1){
+            opacity: .1!important;
+        }
+        .focus li{
+            float: left;
+        }
+        .focus li img{
+            width: 300px;
+            height: 195px;
+        }
+        ol{
+            position: absolute;
+            right: 4px;
+            bottom: 14px;
+        }
+        ol li{
+            display: inline-block;
+            padding: 5px;
+            transition: all .3s;
+            border-radius: 4px;
+            margin-left: 5px;
+            background-color:seagreen;
+        }
+        .current{
+            background-color: red;
+            width: 20px;
+        }
+        .title{
+            height: 140px;
+            border: 1px solid red;
+        }
+        .content{
+            height: 240px;
+            border: 1px solid red;
+        }
+        .body{
+            height: 340px;
+            border: 1px solid red;
+        }
+        .footer{
+            height: 140px;
+            border: 1px solid red;
+        }
+        .goBack{
+            display: none;
+            padding: 10px;
+            position: fixed;
+            bottom: 90px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, .1);
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="w">
+        <div class="focus">
+            <ul>
+                <li><img src="../../textimg/b4.jpg" alt=""></li>
+                <li><img src="../../textimg/b1.jpg" alt=""></li>
+                <li><img src="../../textimg/b2.jpg" alt=""></li>
+                <li><img src="../../textimg/b3.jpg" alt=""></li>
+                <li><img src="../../textimg/b4.jpg" alt=""></li>
+                <li><img src="../../textimg/b1.jpg" alt=""></li>
+            </ul>
+            <ol>
+                <li class="current"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+    </div>
+    <div class="title"></div>
+    <div class="content"></div>
+    <div class="body"></div>
+    <div class="footer"></div>
+    <div class="goBack">回到顶端</div>
+    <script>
+        var focus = document.querySelector('.focus');
+        var ul = focus.children[0];
+        var w = focus.offsetWidth;
+        var ol = focus.children[1];
+        var index = 0;
+        var flag = true;
+        //1.
+        var timer = setInterval(function() {
+            index++;
+            var tranx = -index * w;
+            ul.style.transition = 'all .3s';
+            ul.style.transform = 'translateX('+tranx+'px)';
+        },2000);
+        //2.
+        ul.addEventListener('transitionend',function(){
+
+            if(ul.children.length - 2 == index){
+                index = 0;
+                var tranx = -index * w;
+                ul.style.transition = 'none';
+                ul.style.transform = 'translateX('+ tranx+'px)';
+            }else if(index < 0){
+                index = 3;
+                var tranx = -index * w;
+                ul.style.transition = 'none';
+                ul.style.transform = 'translateX('+ tranx+'px)';
+            }
+            //3.小圆点
+            ol.querySelector('li.current').classList.remove('current');
+            /*ol.children[index].style.transition = 'all .3s'; */
+            ol.children[index].classList.add('current');
+        });
+        var startx = 0;
+        var movex = 0;
+        var flag = false;
+        ul.addEventListener('touchstart',function(e){
+            startx = e.targetTouches[0].pageX;
+            clearInterval(timer);
+            
+        });
+        ul.addEventListener('touchmove',function(e){
+            movex = e.targetTouches[0].pageX - startx;
+
+            var trans = -index * w + movex;
+            console.log(startx+'-');
+            
+            ul.style.transition = 'none';
+            /* ul.style.transform = 'translateX('+((-index * w) + movex)+'px)'; */
+            ul.style.transform = 'translateX('+trans+'px)';
+            /* console.log(-index * w + movex);
+            console.log(movex); */
+            flag = true;
+            e.preventDefault();
+        });
+        ul.addEventListener('touchend',function() {
+            if(flag){
+                if(Math.abs(movex) > 50){
+                    if(movex > 0){
+                        index--;
+                    }else{
+                        index++;
+                    }
+                }
+                var tranx = -index * w;
+                ul.style.transition = 'all .3s';
+                ul.style.transform = 'translateX('+ tranx+'px)';
+            }
+            clearInterval(timer);
+                timer = setInterval(function() {
+                    index++;
+                    var translatex = -index * w;
+                    ul.style.transition = 'all .3s';
+                    ul.style.transform = 'translateX('+translatex+'px)';
+                },2000);
+        });
+
+
+    </script>
+    <script>
+        var title = document.querySelector('.title');
+        var goBack = document.querySelector('.goBack');
+        window.addEventListener('scroll',function(){
+    
+            if(window.pageYOffset >= title.offsetTop){
+                goBack.style.display = 'block';
+            }else{
+                goBack.style.display = 'none';
+            }
+        });
+        goBack.addEventListener('click',function() {
+            tap(goBack,function() {
+                window.scroll(0, 0);
+            })
+        })
+        function tap(obj, callback){
+            var startTime = 0;
+            var isMove = false;
+            obj.addEventListener('touchstart',function() {
+                startTime = Date.now();
+            });
+            obj.addEventListener('touchmove',function() {
+                isMove = true;
+            });
+            obj.addEventListener('touchend',function() {
+                if(!isMove && ((Date.now() - startTime) < 150)){
+                    callback && callback();
+                }
+                isMove = false;
+                startTime = 0;
+            });
+        }
+    </script>
+</body>
+</html>

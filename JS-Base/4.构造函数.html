@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //构造函数
+        function Star(name,age){
+            this.name = name;//this.name指向内存中创建的对象
+            this.age = age;
+            this.sing = function(sang){
+                console.log(sang);
+                
+            }
+        }
+        var ldh = new Star('ldh',12);//调用函数返回的是一个对象，对象实例化过程
+        console.log(ldh.name);
+        console.log(ldh['age']);
+        ldh.sing('老姐');
+
+        for(var key in ldh){
+            console.log(key);//输出的是变量名
+            console.log(ldh[key]);
+            
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

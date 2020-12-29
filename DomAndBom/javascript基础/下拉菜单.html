@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+            text-decoration: none;
+        }
+        .ul::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+        .ul>li{
+            position: relative;
+            border: 1px solid black;
+            float: left;
+            padding: 11px;
+        }
+        .ul>li>a{
+            text-align: center;
+        }
+        .ul ul{
+            position: absolute;
+            top: 43px;
+            left: 0px;
+            border: 1px solid red;
+            display: none;
+        }
+        .ul ul li{
+            padding: 10px;
+            /* border: 1px solid red; */
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul class="ul">
+            <li>
+                <a href="">微博</a>
+                <ul>
+                    <li>你好</li>
+                    <li>你好</li>
+                    <li>你好</li>
+                    <li>你好</li>
+                </ul>
+            </li>
+            <li>
+                <a href="">微博</a>
+                <ul>
+                    <li>你好</li>
+                    <li>你好</li>
+                    <li>你好</li>
+                    <li>你好</li>
+                </ul>
+            </li>
+            <li>
+                <a href="">微博</a>
+                <ul>
+                    <li>你好</li>
+                    <li>你好</li>
+                    <li>你好</li>
+                    <li>你好</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var ul_li = document.querySelector('.ul').children;
+        for(var i = 0; i < ul_li.length; i++){
+            ul_li[i].onmouseover = function(){
+                this.children[this.children.length - 1].style.display = 'block';
+            }
+            ul_li[i].onmouseout = function(){
+                this.children[this.children.length - 1].style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

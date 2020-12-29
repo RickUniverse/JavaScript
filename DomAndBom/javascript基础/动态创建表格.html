@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>姓名</td>
+                    <td>学科</td>
+                    <td>成绩</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var datas = [{
+            name:'张三1',
+            subject:'javascript',
+            result:10
+        },{
+            name:'张三2',
+            subject:'javascript',
+            result:10
+        },{
+            name:'张三3',
+            subject:'javascript',
+            result:10
+        },{
+            name:'张三4',
+            subject:'javascript',
+            result:10
+        },];
+        var tbody = document.getElementsByTagName('tbody')[0];
+        for(var i = 0; i < datas.length; i++){
+            var tr = document.createElement('tr');
+            for (var key in datas[i]) {
+                var td = document.createElement('td');
+                td.innerHTML = datas[i][key];
+                tr.appendChild(td);
+            }
+            var td = document.createElement('td');
+            var a = document.createElement('a');
+            a.setAttribute('href','javascript:;');
+            a.innerHTML = '删除';
+            td.appendChild(a);
+            tr.appendChild(td);
+            tbody.appendChild(tr);
+            a.onclick = function(){
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script>
+</body>
+</html>

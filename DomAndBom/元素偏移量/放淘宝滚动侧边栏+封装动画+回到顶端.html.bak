@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sidebar{
+            position: absolute;
+            width: 60px;
+            height: 200px;
+            top: 500px;
+            right: 50%;
+            margin-right: -620px;
+            background-color:tomato;
+        }
+        .header{
+            width: 1100px;
+            height: 400px;
+            margin: 0px auto;
+            background-color: royalblue;
+            margin-bottom: 20px;
+        }
+
+        .banner{
+            position: relative;
+            width: 1100px;
+            height: 500px;
+            margin: 0px auto;
+            background-color:saddlebrown;
+            margin-bottom: 20px;
+        }
+
+        .body{
+            width: 1100px;
+            height: 700px;
+            margin: 0px auto;
+            background-color:seagreen;
+        }
+
+        .content{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color:seagreen;
+        }
+        span{
+            display: none;
+        }
+    </style>
+    <script src="../../js/淘宝侧边栏+动画.js"></script>
+</head>
+<body>
+    <div class="sidebar"><span>回到顶部</span></div>
+    <div class="header">
+        头部内容
+    </div>
+    <div class="banner"> 
+        <div class="content">
+            <button>点击前进</button>
+            <button>点击后退</button>
+        </div>
+        广告内容
+    </div>
+    <div class="body">
+        主体部分
+    </div>
+    <script>
+        var span = document.addEventListener('click',function(){
+            animate(window,1200);
+        });
+        function animate(obj, target, callback){
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function() {
+                var step = (target - window.pageYOffset) / 10;
+                step = step < 0 ? Math.floor(step) : Math.ceil(step);
+                if(target == window.pageYOffset){
+                    clearInterval(timer);
+                    callback && callback();
+                }
+                /* console.log(target - window.pageYOffset);
+                console.log(window.pageYOffset);
+                console.log(step); */
+                
+                window.scroll(0,window.pageYOffset + step);
+            },15);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="dome" index="1" class="active"></div>
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        console.log(div.id);//dome    elements.id内置属性  这种方式主要针对内置属性
+        console.log(div.index);//undefined 
+        console.log(div.getAttribute('id'));//dome
+        console.log(div.getAttribute('index'));//1 这种方式主要针对自定义属性
+        console.log(div.setAttribute('index','2'));
+        div.className = 'a';
+        
+    </script>
+</body>
+</html>

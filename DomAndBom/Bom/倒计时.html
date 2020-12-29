@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            padding: 10px;
+            background-color: black;
+            color: wheat;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var inputTime = +new Date('2020-4-10 18:00:00');
+
+        window.addEventListener('load',function(){
+            var shour = document.querySelector('#hour');
+            var sminute = document.querySelector('#minute');
+            var ssecond = document.querySelector('#second');
+
+            countDown();//先执行一遍
+            setInterval(countDown,1000);
+
+            function countDown(){
+            var nowTime = +new Date();
+            
+            var totalTimes = (inputTime - nowTime) / 1000;
+            var hour = parseInt(totalTimes / 60 / 60 % 24);
+            hour = hour < 10 ? '0' + hour : hour;
+            shour.innerHTML = hour;
+
+            var minute = parseInt(totalTimes / 60 % 60);
+            minute = minute < 10 ? '0' + minute : minute;
+            sminute.innerHTML = minute;
+
+            var second = parseInt(totalTimes % 60);
+            second = second < 10 ? '0' + second : second;
+            ssecond.innerHTML = second;
+        }
+        })
+    </script>
+    <div>
+        <span id="hour">0</span>
+        <span id="minute">0</span>
+        <span id="second">0</span>
+    </div>
+</body>
+</html>

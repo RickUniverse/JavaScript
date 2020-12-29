@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+            text-decoration: none;
+        }
+        .focus{
+            position: relative;
+            width: 300px;
+            border: 1px solid red;
+            margin: 110px auto;
+            overflow: hidden;
+            height: 190px;
+        }
+        .arrow-l,
+        .arrow-r{
+            position: absolute;
+            top: 50%;
+            color: white;
+            padding: 20px 10px;
+            background-color: rgba(0, 0, 0, .5);
+            transform:translateY(-50%);
+            z-index: 2;
+            display: none;
+        }
+        .arrow-l{
+            left: 0px;
+        }
+        .arrow-r{
+            right: 0px;
+        }
+        img{
+            width: 300px;
+        }
+        .focus ul::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+        .focus ul{
+            position: absolute;
+            width: 700%;
+        }
+        .focus ul li{
+            float: left;
+        }
+        .circle::after{
+            content:'';
+            clear: both;
+            display: block;
+        }
+        .circle{
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .circle li{
+            float: left;
+            padding: 5px;
+            margin-left: 7px;
+            border-radius: 20px;
+        }
+        .allli{
+            background-color: white;
+        }
+        .current{
+            background-color:rgba(0, 0, 0, .9);
+        }
+    </style>
+    <!-- animate封装动画 -->
+    <script src="../../js/animate.js"></script>
+    <!-- 轮播图js -->
+    <script src="../../js/轮播js.js"></script>
+</head>
+<body>
+    <div class="w">
+        <div class="main">
+            <div class="focus">
+                <a href="javascript:;" class="arrow-l">《</a>
+                <a href="javascript:;" class="arrow-r">》</a>
+                <ul>
+                    <li><a href="#"><img src="../../textimg/b1.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../../textimg/b2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../../textimg/b3.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="../../textimg/b4.jpg" alt=""></a></li>
+                </ul>
+                <ol class="circle"></ol>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

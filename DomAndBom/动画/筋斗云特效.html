@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+        ul::after{
+            content:'';
+            clear: both;
+            display: block;
+        }
+        ul{
+            position: relative;
+            border: 1px solid red;
+            /* display: inline-block; */
+        }
+        span{
+            position: absolute;
+            padding: 20px 5px;
+            background-color: burlywood;
+        }
+        li{
+            padding: 10px;
+            float: left;
+            background-color: rgba(0, 0, 0, .1);
+        }
+    </style>
+    <script src="../../js/animate.js"></script>
+    <script>
+        window.addEventListener('load',function(){
+            var span = document.querySelector('span');
+            var ul = document.querySelector('ul');
+            var li = ul.querySelectorAll('li');
+            var current = 0;
+            for(var i = 0; i < li.length; i++){
+                li[i].addEventListener('mouseenter',function(){
+                    animate(span,this.offsetLeft);
+                });
+                li[i].addEventListener('mouseleave',function(){
+                    animate(span,current);
+                });
+                li[i].addEventListener('click',function(){
+                    current = this.offsetLeft;
+                });
+            }
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <span></span>
+            <li>这时筋斗云</li>
+            <li>这时筋斗云</li>
+            <li>这时筋斗云</li>
+            <li>这时筋斗云</li>
+            <li>这时筋斗云</li>
+            <li>这时筋斗云</li>
+            <li>这时筋斗云</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="time">2020-1-1</div>
+    <script>
+        var timer = document.getElementById('time');
+        console.log(timer);
+        console.log(typeof timer);
+        console.dir(timer)
+    </script>
+    <div>
+        <ul>
+            <li>好</li>
+            <li>好</li>
+            <li>好</li>
+            <li>好</li>
+        </ul>
+        <ul id="nav">
+            <li>no</li>
+            <li>no</li>
+        </ul>
+        <script>
+            var lis = document.getElementById('nav').getElementsByTagName('li');
+            console.log(lis);
+            for(var i = 0;i < lis.length; i++){
+                console.log(lis[i]);
+                
+            }
+        </script>
+        <div class="box">222</div>
+        <div class="box">222</div>
+        <ul>
+            <li>111</li>
+        </ul>
+        <script>
+            var box = document.querySelector('.box');
+            console.log(box);
+            var boxs = document.querySelectorAll('.box');
+            console.log(boxs);
+            var lis = document.querySelectorAll('#nav');
+            console.log(lis);
+            
+        </script>
+        <script>
+            var bodyLis = document.body;//body标签对象元素获取
+            console.log(bodyLis);
+            var htmlEle = document.documentElement;//html对象元素获取
+            console.log(htmlEle);
+            var lis = document.getElementsByTagName('html');
+            console.dir(lis);
+            
+        </script>
+        <button id="btn">唐伯虎</button>
+        <script>
+            document.getElementById('btn').onclick = function (){
+                alert('点秋香');
+            }
+        </script>
+        <script>
+            document.getElementById('btn').onclick = function(){
+                console.log('点击事件');
+                
+            }
+        </script>
+        <p>111</p>
+        <div class="time"></div>
+        <script>
+            function getTime(){
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var dates = date.getDate();
+                var day = date.getDay();
+                var arr = ['星期7','星期1','星期2','星期3','星期4','星期5','星期6'];
+                var hours = date.getHours();
+                var minutes = date.getMinutes();
+                var Seconds = date.getSeconds();
+                return '年：'+year+'月：'+month+'日：'+dates+arr[day]+'时：'+hours+'分：'+minutes+'秒：'+Seconds;
+            }
+            document.querySelector('#btn').onclick = function(){
+                document.querySelector('p').innerText = getTime();
+            }
+            document.querySelector('.time').innerText = getTime();
+        </script>
+        <p id="p2">
+            woshi
+            <span>123</span>
+        </p>
+        <script>
+            console.log(document.getElementById('p2').innerHTML);
+            console.log(document.getElementById('p2').innerText);
+            var span = document.querySelector('span');
+            span.innerHTML = '<strong>asdf23</strong>234234sdaf';
+            document.getElementsByTagName('span')[0].innerText = '<strong>asdf23</strong>234234sdaf';
+            document.getElementsByClassName('box')[0].innerHTML = '-------';
+        </script>
+        <button id="object">对象小结</button>
+        <button id="date">日起对象</button>
+        <img src="" alt="">
+        <script>
+            var img = document.querySelector('img');
+            document.getElementById('object').onclick = function(){
+                img.src = 'img/对象小结.png';
+                img.title = '对象知识点';
+            }
+            document.querySelector('#date').onclick = function(){
+                img.src = 'img/日期对象.png';
+                img.title = '日起对象知识点';
+            }
+        </script>
+        <button id="dates">2020年4月5日15:21:42</button>
+        <script>
+            document.getElementById('dates').onclick = function(){
+                var img = document.querySelector('img');
+                img.src = getImg(16);
+            }
+            function getImg(time){
+                if(time >= 16){
+                    return 'img/对象小结.png';
+                }else if(time >= 10){
+                    return 'img/日期对象.png';
+                }
+            }
+        </script>
+        <input type="text">
+        <button id="btn2">sdf</button>
+        <script>
+            document.querySelector('#btn2').onclick = function(){
+                document.querySelector('input').value = '点击事件';
+                this.disabled = true;//this指向函数的调用者
+                
+            }
+        </script>
+    </div>
+</body>
+</html>

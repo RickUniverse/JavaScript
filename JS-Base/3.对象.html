@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //对象创建
+        //1.第一种方式
+        // var stu = {};
+        // 2.
+        var stu = {
+            name: 'zhangsna',
+            age: 12,
+            sayHi: function(){//方法后面是一个匿名函数
+                console.log('hi');
+                
+            }
+        }
+        console.log(stu.name);
+        console.log(stu['age']);
+        stu.sayHi();
+        // 3.
+        var stu2 = new Object();
+        stu.name = 'lisi';
+        stu.age = 11;
+        stu.sayHi = function(){
+            console.log('hi~');
+            
+        }
+        console.log(stu2['age']);
+        stu2.sayHi();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

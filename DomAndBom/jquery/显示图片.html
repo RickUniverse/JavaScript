@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            text-decoration: none;
+            list-style: none;
+        }
+        .focus{
+            display: inline-block;
+            overflow: hidden;
+            border: 1px solid red;
+        }
+        .focus ul,
+        .content{
+            float: left;
+            border: 1px solid red;
+        }
+        li{
+            padding: 20px;
+            border: 1px solid red;
+        }
+        img{
+            /* position: absolute; */
+            display: none;
+            width: 300px;
+            height: 319px;
+        }
+        img:first-child{
+            display: block;
+        }
+    </style>
+    <script src="../../js/jquery.js"></script>
+    <script>
+        $(function(){
+            $('.focus ul>li').mouseover(function(){
+                /* console.log($('.content').children('img')); */
+                /* console.log($(this).index); */
+                var index = $(this).index();
+                console.log($('.content').children('img')[1]);//获得得是dom元素是原生js dom
+                console.log($('.content').children('img').eq(index));
+                
+                $('.content').children('img').eq(index).show().siblings().hide();
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="focus">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <div class="content">
+            <img src="../../textimg/b1.jpg" alt="">
+            <img src="../../textimg/b2.jpg" alt="">
+            <img src="../../textimg/b3.jpg" alt="">
+            <img src="../../textimg/b4.jpg" alt="">
+            <img src="../../textimg/iphone.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

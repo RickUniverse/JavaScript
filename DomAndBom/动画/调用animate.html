@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            position: relative;
+            width: 100px;
+            height: 40px;
+            margin: 100px auto;
+            /* left: 50%;
+            transform: translate(-50%,-50%); */
+            background-color: tomato;
+        }
+        .box>span{
+            position: absolute;
+            display: block;
+            background-color: violet;
+            width: 200px;
+            height: 40px;
+            top: 0px;
+            right: -200px;
+        }
+    </style>
+    <script src="../../js/animate.js"></script>
+</head>
+<body>
+    <div class="box">
+        <span>联系客服</span>
+        <a href="">《</a>
+    </div>
+    <script>
+        var box = document.querySelector('.box');
+        var son = box.children[0];
+        box.addEventListener('mouseenter',function(){
+            animate(son,-200,function(){
+                box.children[1].innerHTML = '》';
+            })
+        })
+        box.addEventListener('mouseleave',function(){
+            animate(son,100,function(){
+                box.children[1].innerHTML = '《';
+            })
+        })
+    </script>
+</body>
+</html>

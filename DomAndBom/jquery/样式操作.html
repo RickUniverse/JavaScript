@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .current{
+            transition: all .5s;
+            transform: rotate(360deg);
+            border: 1px solid beige;
+        }
+    </style>
+    <script src="../../js/jquery.js"></script>
+    <script>
+        $(function(){
+            $('div').css({
+                backgroundColor:'red',
+                width:0,
+                padding:300
+            });
+            $('div').click(function(){
+                // $('div').addClass('current');
+                // $('div').removeClass('current');//添加一个类名不覆盖之前的
+                $(this).toggleClass('current');
+            })
+            $('div').click(function(){
+                $(this).toggle(1000,function(){
+                    console.log('11');
+                    
+                })
+            })
+            //下拉 hover slidetoggle
+            $('div').hover(function() {//两个函数都写，鼠标移入执行第一个函数，离开执行第二个函数
+                $(this).slideDown(500);
+            },function() {
+                $(this).slideUp(500);
+            })
+            $('div').hover(function() {//离开和移入都执行这个函数
+                //必须加到动画方法的前面，作用是清除上一次的动画效果
+                $(this).stop().slideToggle(500);
+                //加到后边会直接清除动画效果，导致没有动画效果
+                $(this).slideToggle(500).stop();
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>

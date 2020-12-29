@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        var inner = document.querySelector('div');
+        /* function fn(){
+            var d1 = new Date();
+            for (let i = 0; i < 1000; i++) {
+                inner.innerHTML += '<a>a标签</a>';           
+            }
+            var d2 = new Date();
+            console.log(d2-d1);
+            
+        }
+        fn(); */
+        /* function fu(){
+            var d1 = new Date();
+            for(var i = 0; i < 100000; i++){
+                var a = document.createElement('a');
+                inner.appendChild(a);
+            }
+            var d2 = new Date();
+            console.log(d2 - d1);
+            
+        }
+        fu(); */
+        function fu(){//效率最高
+            var d1 = new Date();
+            var arr = [];
+            for(var i = 0; i < 100000; i++){
+                /* var a = document.createElement('a'); */
+                arr.push('<a>你好</a>');
+            }
+            inner.innerHTML = arr.join('');
+            console.log(arr.join(''));
+            
+            var d2 = new Date();
+            console.log(d2-d1);
+            
+            var d2 = new Date();
+        }
+        fu();
+    </script>
+</body>
+</html>

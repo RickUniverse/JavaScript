@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //定时器
+        window.setTimeout(function(){//这个个函数，叫做回调函数
+            console.log('两秒后');
+            
+        },2000)//第二个参数不写默认为0
+        function callTime(){
+            console.log('定时函数');
+            
+        }
+        var time1 = setTimeout(callTime,3000);//加一个标识符time1区分不同的定时器，callTime叫做回调函数
+        document.addEventListener('DOMContentLoaded',function(){
+            var img = document.querySelector('img');
+            var time1 = setTimeout(function(){
+                img.style.display = 'none';
+            },2000);
+
+            //清楚请时期
+            var btn = document.querySelector('button');
+            btn.addEventListener('click',function(){//这个函数也是回掉函数
+                clearTimeout(time1);
+            })
+            //循环定时器
+            var index = 0;
+            var time2 = setInterval(function(){
+                console.log('每隔一秒被调用一次');
+                index++;
+                if(index >= 5){
+                    clearInterval(time2);
+                }
+            },1000);
+        })
+    </script>
+    <button>清除定时器</button>
+    <img src="../../imgKnowledge/new关键字.png" alt="">
+</body>
+</html>

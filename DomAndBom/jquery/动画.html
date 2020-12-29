@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+    <script src="../../js/jquery.js"></script>
+    <script>
+        $(function(){
+            $('button').click(function(){
+                //第一个参数是对象，css样式对象
+                $('div').animate({
+                    right: 200,
+                    bottom: -200,
+                    opacity: .5,
+                    width: 300,
+                    background: 'red',
+                    height: 300
+                },500,function() {
+                    $('div').animate({
+                        right:100,
+                        opacity: .9
+                    },500)
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <button>开始动画</button>
+    <div></div>
+</body>
+</html>
